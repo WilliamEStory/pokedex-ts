@@ -5,7 +5,7 @@ import { PokeAPI, type Location, type ShallowLocations } from "./poke-api";
 export type CLICommand = {
   name: string;
   description: string;
-  callback: (state: State) => Promise<void>;
+  callback: (state: State, ...args: string[]) => Promise<void>;
 };
 
 export type State = {

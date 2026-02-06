@@ -33,8 +33,10 @@ export class PokeAPI {
     if (cachedRResp) {
       return cachedRResp as Location;
     }
+
+    console.log(`${PokeAPI.baseURL}/location-area/${locationName}`);
     
-    const resp = await fetch(`${PokeAPI.baseURL}/location/${locationName}`)
+    const resp = await fetch(`${PokeAPI.baseURL}/location-area/${locationName}/`)
 
     if (!resp.ok) {
       return Promise.reject(new Error(`Failed to fetch location: ${resp.statusText}`));
