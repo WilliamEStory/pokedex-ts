@@ -1,6 +1,6 @@
 import { createInterface, type Interface } from "readline";
 import { getCommands } from "./commands";
-import { PokeAPI, type Location, type ShallowLocations } from "./poke-api";
+import { PokeAPI, Pokemon, type Location, type ShallowLocations } from "./poke-api";
 
 export type CLICommand = {
   name: string;
@@ -16,7 +16,9 @@ export type State = {
   PokeAPI: {
     fetchLocations: (pageURL?: string) => Promise<ShallowLocations>;
     fetchLocation: (locationName: string) => Promise<Location>;
+    fetchPokemon: (pokemonName: string) => Promise<Pokemon>;
   }
+  pokedex: Record<string, Pokemon>;
 };
 
 export function initState(): State {
@@ -34,5 +36,6 @@ export function initState(): State {
     nextLocationsURL: "",
     prevLocationsURL: "",
     PokeAPI: pokeAPI,
+    pokedex: {},
   };
 }

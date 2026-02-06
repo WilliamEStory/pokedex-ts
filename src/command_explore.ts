@@ -1,7 +1,6 @@
 import { State } from "./state";
 
 export async function commandExplore(state: State, ...args: string[]) {
-  console.log({args})
   const locationName = args[0];
   if(!locationName) {
     console.log("Please provide a location name. Usage: explore <location-name>");
